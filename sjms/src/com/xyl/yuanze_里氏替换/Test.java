@@ -1,4 +1,4 @@
-package com.xyl.yuanze_lishitihuan;
+package com.xyl.yuanze_里氏替换;
 public class Test {
     public static void main(String[] args) {
         B b=new B();

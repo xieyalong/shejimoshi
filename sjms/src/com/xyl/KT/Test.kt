@@ -42,5 +42,6 @@ object  KS{
 }
 
 fun main() {
+    println("")
 }
 
