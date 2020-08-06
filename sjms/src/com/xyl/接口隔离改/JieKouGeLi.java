@@ -1,4 +1,4 @@
-package com.xyl.yuanze_jiekougeli;
+package com.xyl.接口隔离改;
 
 /**
  * 接口隔离
@@ -8,15 +8,19 @@ public class JieKouGeLi {
         B b=new B();
     }
 }
+
 //把Itf拆分成两个
 interface Itf{
     void run1();
+}
+
+interface Itf2{
     void run2();
     void run3();
 }
 
 //A想实现Itf所有方法
-class  A implements Itf{
+class  A implements Itf,Itf2{
     @Override
     public void run1() { }
     @Override
@@ -24,14 +28,11 @@ class  A implements Itf{
     @Override
     public void run3() {}
 }
+
 //B只实现了Itf.run1()方法
 class B implements Itf{
     @Override
     public void run1() {}
-    @Override
-    public void run2() {}
-    @Override
-    public void run3() {}
 }
 
 

@@ -1,4 +1,4 @@
-package com.xyl.yuanze_yilaidaozhi.gai2;
+package com.xyl.依赖倒置原则.gai2;
 
 /**
  * 成员变量是接口

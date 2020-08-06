@@ -1,4 +1,4 @@
-package com.xyl.yuanze_yilaidaozhi;
+package com.xyl.依赖倒置原则;
 
 public class yilaidaozhi {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.xyl.yuanze_单一原则;
+package com.xyl.单一原则;
 
 /**
  * 单一职责

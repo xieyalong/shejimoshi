@@ -1,4 +1,4 @@
-package com.xyl.yuanze_里氏替换;
+package com.xyl.里氏替换原则;
 public class Test {
     public static void main(String[] args) {
         B b=new B();

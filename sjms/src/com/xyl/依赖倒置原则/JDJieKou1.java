@@ -1,4 +1,4 @@
-package com.xyl.yuanze_yilaidaozhi;
+package com.xyl.依赖倒置原则;
 
 /**
  * 通过接口方法传递接口进行依赖
