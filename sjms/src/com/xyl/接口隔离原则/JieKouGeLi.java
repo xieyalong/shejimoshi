@@ -1,4 +1,4 @@
-package com.xyl.接口隔离;
+package com.xyl.接口隔离原则;
 
 /**
  * 接口隔离
