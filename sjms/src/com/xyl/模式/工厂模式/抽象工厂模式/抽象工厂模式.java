@@ -6,7 +6,7 @@ public class 抽象工厂模式 {
     //客户端
     public static void main(String[] args) {
 //        new DingDan().factory(new BjFactory());
-        new DingDan().factory(new LdFactory());
+//        new DingDan().factory(new LdFactory());
     }
 }
 //工厂接口类
