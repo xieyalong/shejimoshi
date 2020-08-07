@@ -11,9 +11,44 @@ public class 简单工厂模式 {
 class KeHuDuan{
     public static void main(String[] args) {
         //订单
-        new DingDan();
+        new DingDan().setFactory(new SimpleFactory());
     }
 }
+//工厂类 让使用方直接使用工厂，你要什么样的披萨，工厂就生产什么样的披萨
+class SimpleFactory{
+    //你给我一个订购的类型，我创建一个对象给你返回
+    //以后只要新加的 只需要修改这里就可以，不需要修改其他地方
+    public  Pizz createPizz(String type){
+        Pizz pizz=null;
+        if ("1".equals(type)){
+            pizz= new ZhiShiPizz();
+            pizz.setName("芝士披萨");
+        }else if ("2".equals(type)){
+            pizz=new LiulianPizz();
+            pizz.setName("榴莲披萨");
+        }else  if("3".equals(type)){//增加香蕉披萨
+            pizz=new XiangJiaoPizz();
+            pizz.setName("香蕉披萨");
+        }
+        return pizz;
+    }
+    //静态的简单工厂模式
+    public static   Pizz createPizz2(String type){
+        Pizz pizz=null;
+        if ("1".equals(type)){
+            pizz= new ZhiShiPizz();
+            pizz.setName("芝士披萨");
+        }else if ("2".equals(type)){
+            pizz=new LiulianPizz();
+            pizz.setName("榴莲披萨");
+        }else  if("3".equals(type)){//增加香蕉披萨
+            pizz=new XiangJiaoPizz();
+            pizz.setName("香蕉披萨");
+        }
+        return pizz;
+    }
+}
+
 //披萨基类 提供方
 abstract class  Pizz{
     //披萨名称
@@ -67,32 +102,27 @@ class XiangJiaoPizz extends Pizz{
 }
 //订单披萨  使用方
 class DingDan{
-    public DingDan() {
+    public void setFactory(SimpleFactory factory) {
+        String type=null;
         Pizz pizz=null;
         do {
-            String type=getType();//披萨种类
-            if ("1".equals(type)){
-                pizz= new ZhiShiPizz();
-                pizz.setName("芝士披萨");
-            }else if ("2".equals(type)){
-                pizz=new LiulianPizz();
-                pizz.setName("榴莲披萨");
-            }else  if("3".equals(type)){//增加香蕉披萨
-                pizz=new XiangJiaoPizz();
-                pizz.setName("香蕉披萨");
-            }else {
-                System.out.println("没有你要订购的披萨 退出");
-                break;
-            }
+            type=getType();
+            pizz= factory.createPizz(type);
             //输出披萨制作过程
-            pizz.prepare();
-            pizz.kongKao();
-            pizz.qieGe();
-            pizz.daBao();
+            if (null!=pizz){
+                pizz.prepare();
+                pizz.kongKao();
+                pizz.qieGe();
+                pizz.daBao();
+            }else{
+                System.out.println("订购失败");
+            }
+
         }while (true);
     }
+
     //获取用户输入的披萨种类
-    public  String getType(){
+    private   String getType(){
         Scanner input =new Scanner(System.in);
         System.out.println("输入要订购的披萨种类 1是芝士披萨 2是榴莲披萨 3是香蕉披萨");
         String name=input.nextLine();
