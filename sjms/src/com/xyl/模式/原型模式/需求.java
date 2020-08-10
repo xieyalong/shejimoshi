@@ -1,4 +1,4 @@
-package com.xyl.原型模式;
+package com.xyl.模式.原型模式;
 
 public class 需求 {
 }
