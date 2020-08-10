@@ -1,61 +1,53 @@
 package 原型模式;
 
+import com.alibaba.fastjson.JSON;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static sun.misc.Version.println;
+
 public class Test {
 }
 class  Client{
     public static void main(String[] args) {
-        Sheep sheep=new Sheep("tom",1,"白色");
-        //不用再new Sheep(sheep.getName(),sheep.getAge(),sheep.getColor());
+        Sheep sheep=new Sheep("tom");
+        sheep.sheep=new Sheep("新疆羊");
         Sheep sheep1=(Sheep)sheep.clone();
-        Sheep sheep2=(Sheep)sheep.clone();
+        System.out.println("=====引用类型的深copy=======");
+        //sheep=1627674070
+        System.out.println("sheep="+sheep.hashCode());
+//        sheep1=1360875712
+        System.out.println("sheep1="+sheep1.hashCode());
+        System.out.println("=====引用类型的浅copy=======");
+//        sheep.sheep=1625635731
+        System.out.println("sheep.sheep="+sheep.sheep.hashCode());
+//        sheep1.sheep=1625635731
+        System.out.println("sheep1.sheep="+sheep1.sheep.hashCode());
+        System.out.println("=====基本类型的clone=======");
+        sheep1.setName("tom2");
+        //sheep.name=tom
+        System.out.println("sheep.name="+sheep.getName());
+//        sheep.name=tom2
+        System.out.println("sheep1.name="+sheep1.getName());
     }
 }
 
 //羊
 class  Sheep implements Cloneable{
     private  String name;
-    private int age;
-    private  String color;
-
-    public Sheep(String name, int age, String color) {
+    public  Sheep sheep;
+    public Sheep(String name) {
         this.name = name;
-        this.age = age;
-        this.color = color;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    @Override
-    public String toString() {
-        return "Sheep{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", color='" + color + '\'' +
-                '}';
-    }
-    //重写克隆
+    //重写克隆 实现原型模式
     @Override
     protected Object clone(){
         Sheep sheep=null;
@@ -64,8 +56,6 @@ class  Sheep implements Cloneable{
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
         return sheep;
     }
 }
