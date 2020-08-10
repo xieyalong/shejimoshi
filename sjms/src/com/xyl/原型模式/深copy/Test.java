@@ -1,7 +1,7 @@
 package com.xyl.原型模式.深copy;
 
 import java.io.*;
-
+//深copy
 public class Test {
     public static void main(String[] args) throws CloneNotSupportedException {
         DeepProtoTypepe p= new DeepProtoTypepe();
@@ -67,6 +67,7 @@ class DeepProtoTypepe implements Cloneable, Serializable {
         }
     }
 }
+//浅copy
 //public class Test {
 //    public static void main(String[] args) throws CloneNotSupportedException {
 //        DeepProtoTypepe p= new DeepProtoTypepe();
