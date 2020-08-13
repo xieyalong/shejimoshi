@@ -7,7 +7,10 @@ import org.omg.CORBA.Object
 import java.io.File
 import java.io.PrintStream
 import java.time.Year
+import java.util.logging.Handler
 import kotlin.concurrent.thread
+import kotlin.concurrent.timer
+import kotlin.concurrent.timerTask
 
 
 open abstract class SP{
@@ -37,12 +40,13 @@ class KUser {
 }
 
 object  KS{
-    fun run(){
-        println("")
-    }
+
 }
 
 fun main() {
-println("")
+    try {
+    } catch (e: Exception) {
+    }
+
 }
 
