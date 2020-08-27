@@ -48,3 +48,7 @@ class WebSiteFactory{
         return  pool.size();
     }
 }
+ class Test2{
+    public static void main(String[] args) {
+    }
+}
