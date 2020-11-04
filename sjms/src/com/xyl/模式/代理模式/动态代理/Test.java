@@ -65,3 +65,43 @@ class ProxyFactory{
                 });
     }
 }
+//接口
+interface Itf{
+    void show();
+}
+//目标对象
+class MuBiao implements Itf {
+    @Override
+    public void show() {
+        System.out.println("目标对象的功能");
+    }
+}
+//代理对象
+class Proxy_{
+    //目标对象
+    private Object target;
+    public Proxy_(Object target) {
+        this.target = target;
+    }
+
+    //给目标对象生成一个代理对象
+    //调用：
+    // Itf itf=(Itf) new Proxy_(new MuBiao()).getProxyInstance();
+    // show()在method.invoke(target,args);时候运行的
+    // itf.show();
+    public Object getProxyInstance(){
+        return Proxy.newProxyInstance(
+                target.getClass().getClassLoader(),
+                target.getClass().getInterfaces(),
+                new InvocationHandler() {
+                    //proxy,target,objectVal=MuBiao(目标对象)
+                    @Override
+                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                        System.out.println("jdk代理扩展");
+                        Object objectVal= method.invoke(target,args);//运行目标对象的方法
+                        System.out.println("jdk代理扩展");
+                        return objectVal;
+                    }
+                });
+    }
+}

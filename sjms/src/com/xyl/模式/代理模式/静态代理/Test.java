@@ -35,3 +35,31 @@ class TeacherDaoProxy implements ITeacherDao{
         System.out.println("提交 完成某些操作");//额外功能
     }
 }
+
+//接口
+interface Itf{
+ void show();
+}
+//目标对象
+class MuBiao implements Itf{
+    @Override
+    public void show() {
+        System.out.println("目标对象的功能");
+    }
+}
+//代理
+class Proxy implements Itf{
+    //目标对象
+    Itf imp;
+    public Proxy(Itf imp) {
+        this.imp = imp;
+    }
+    //调用：new  Proxy(new MuBiao()).show();
+    //完成对目标对象的扩展和调用
+    @Override
+    public void show() {
+        System.out.println("扩展");
+        imp.show();//调用目标对象本身的功能
+        System.out.println("扩展");
+    }
+}

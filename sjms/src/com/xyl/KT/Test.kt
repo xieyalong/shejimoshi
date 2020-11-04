@@ -1,16 +1,9 @@
 package com.xyl.KT
 
-import com.alibaba.fastjson.JSON
-import jdk.internal.util.xml.impl.Input
-import org.apache.commons.io.FileUtils
-import org.omg.CORBA.Object
-import java.io.File
-import java.io.PrintStream
-import java.time.Year
-import java.util.logging.Handler
-import kotlin.concurrent.thread
-import kotlin.concurrent.timer
-import kotlin.concurrent.timerTask
+import cn.hutool.cache.CacheUtil
+import cn.hutool.http.HttpUtil
+import cn.hutool.json.JSONObject
+import cn.hutool.json.JSONUtil
 
 
 open abstract class SP{
@@ -23,30 +16,34 @@ open abstract class SP{
 class KUser {
     var type=0
     var name:String?=null
-    get() {
-        println("获取name")
-        if (type==0){
-            field="aaa"
+        get() {
+            println("获取name")
+            if (type==0){
+                field="aaa"
+                return field
+            }
             return field
         }
-        return field
-    }
-    set(value) {
-        //不用 this.name=value
-        //当u.name="aaa"时候 先get，在set
-        field=value
-        println("设置name="+name)
-    }
+        set(value) {
+            //不用 this.name=value
+            //当u.name="aaa"时候 先get，在set
+            field=value
+            println("设置name="+name)
+        }
 }
 
 object  KS{
 
 }
 
+
 fun main() {
-    try {
-    } catch (e: Exception) {
-    }
+    var str=HttpUtil.get("http://www.phonegap100.com/appapi.php?a=getPortalList&catid=20&apge=1")
+    var jo=JSONObject(str)
+    println(jo)
+    var json=jo.getJSONObject("result")
+    print(json.getStr("title"))
+    println("")
 
 }
 
