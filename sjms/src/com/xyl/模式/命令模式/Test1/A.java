@@ -17,6 +17,7 @@ public class A {
         //no=0 灯的开和关
         //no=1 电视的开和关
         int index=0;
+        //指挥者绑定命令
         controller.setCommand(index,lightOncommand,lightOffcommand);
         //按下灯的开按钮
         controller.onButtonWasPUshed(index);
