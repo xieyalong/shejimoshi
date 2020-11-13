@@ -12,7 +12,7 @@ public class A {
         LightOncommand lightOncommand=new LightOncommand(lightReceiver);
         //关灯命令
         LightOffcommand lightOffcommand=new LightOffcommand(lightReceiver);
-        //遥控器
+        //遥控器 指挥者
         RemoteController controller=new RemoteController();
         //no=0 灯的开和关
         //no=1 电视的开和关
