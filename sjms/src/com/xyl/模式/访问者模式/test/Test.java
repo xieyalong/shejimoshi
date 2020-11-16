@@ -38,7 +38,7 @@ public class Test {
 
 /**
  * 角色分析
- * 访问者（观众） 分男性观众，女性观众，并给歌手得出成功，失败等结果
+ * 访问者（评价类） 分男女性观众评价评价结果为成功，失败等结果
  * 访问元素（歌手），歌手得到成功，失败等结果
  * 访问者可以抽象出观众类，
  */
@@ -56,7 +56,6 @@ abstract  class  Action{
     //女性的测评
     public abstract  void getWomanResult(Woman woman);
 }
-
 
 //访问者实现类 晋级  成功
 //一个成功对应一个男的和一个女的，如果多了一个
@@ -98,14 +97,16 @@ abstract class Person{
 
 
 
-//元素实现类 男人
+//元素实现类（观众类型） 男人
 class  Man extends Person{
 
+    //接受一个访问者
     @Override
     public void accept(Action action) {
         action.getManResult(this);
     }
 }
+//元素实现类（观众类型） 女人
 //说明
 //1，这里使用到了双分派
 //双分派：首先在客户端的程序中，将具体的状态作为参数传递到了woman中，完成了第一次分派
@@ -121,6 +122,7 @@ class  Woman extends Person{
 //允许访问者访问元素
 //数据结构 管理很多人（男人，女人）
 class ObjectStructure{
+    //可能是类，可能是集合
     private List<Person> persons=new LinkedList<>();
     //增加到集合中
     public void attache(Person p){
