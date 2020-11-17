@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Test {
     public static void main(String[] args) {
-        //数据结构
+        //数据结构的组装者
         ObjectStructure os=new ObjectStructure();
         System.out.println("--------把元素添加到数据结构中-----------");
         //工程师(元素)加入数据结构中
@@ -29,9 +29,9 @@ public class Test {
 interface Visitor{
     //访问工程师
     //缺点：
-    //违反了迪米特原则（最少知道原则）： 访问者直接访问了具体的实现类
-    //违反了依赖倒转原则（抽象不应该依赖具体类）：这里抽象类依赖了具体类
-    //具体实现类变更时导致修改成本较大
+    //1,违反了迪米特原则（最少知道原则）： 访问者直接访问了具体的实现类
+    //2,违反了依赖倒转原则（抽象不应该依赖具体类）：这里抽象类依赖了具体类
+    //3,元素实现类变更时导致访问者的实现类也跟着改变（知道最小原则）
     void visitEngineer(Engineer element);
     //访问产品经理
     void visitManager (Manager element);
@@ -92,7 +92,7 @@ class  Engineer extends Element{
 
     @Override
     void accept(Visitor visitor) {
-        //this：是那个visitor访问了自己
+        //this：是某个visitor访问了自己
         visitor.visitEngineer(this);
     }
 }
