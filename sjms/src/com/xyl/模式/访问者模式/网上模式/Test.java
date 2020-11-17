@@ -113,7 +113,7 @@ class  Manager  extends Element{
     }
 }
 
-class ObjectStructure{
+class ObjectStructure{//aaa
     //可能是类，可能是集合
     private List<Element> persons=new LinkedList<>();
     //增加到集合中
