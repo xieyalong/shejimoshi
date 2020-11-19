@@ -55,7 +55,7 @@ class Subject {
         map.put(key,observer);
     }
 
-    public void remove(String key,Observer observer) {
+    public void remove(String key) {
         map.remove(key);
     }
     public void notifyObserver(String key,String data) {
