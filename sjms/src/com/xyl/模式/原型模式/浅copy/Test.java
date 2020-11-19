@@ -1,6 +1,5 @@
 package 原型模式;
 
-import com.alibaba.fastjson.JSON;
 
 import java.util.ArrayList;
 import java.util.List;
