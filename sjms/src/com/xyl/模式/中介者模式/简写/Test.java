@@ -19,8 +19,10 @@ class Mediator {
     public  void add(String key,Colleague user){
         map.put(key,user);
     }
+
     //处理各个同事类之间的业务逻辑
     public void  handler(String key){}
+
 }
 //同事类（这里简写 没有写抽象类）
 class Colleague {
